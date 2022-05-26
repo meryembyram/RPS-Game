@@ -1,0 +1,54 @@
+#baslik{
+	background: #f3b748;
+	padding: 20px;
+	color: #d63d6b;
+	text-align: center;
+	font-family: cursive;
+}
+#liste img{
+	padding: 5px;
+	border: 1px #232333 solid;
+	border-radius: 100%;
+}
+#sonuc{
+	margin-top: 45px;
+	width: 200px;
+	height: 150px;
+	padding-left: 175px;
+	padding-top: 10px;
+	font-size: 35px;
+	font-family:cursive;
+	color:#f3b748;
+}
+#bilgisayar-secim{
+	margin-top: 15px;
+	padding: 5px;
+	justify-content: center;
+	border: 3px #232333 solid;
+	border-radius: 100%;
+}
+#bilgisayar-sonuc{
+	/* float:left; */
+	display: flex;
+}
+.tabela{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+	padding: 5px;
+	border: 3px solid maroon;
+	color: white;
+}
+.oyuncu_tabela{
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+	display: flex;
+}
+.bilgisayar_tabela{
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

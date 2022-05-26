@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="style/styles.css" />
+</head>
+<body>
+    <header id="baslik">
+        <h1>Rock Paper Scissors</h1>
+    </header>
+    <div class="container">
+        <div class="tabela">
+            <div class="oyuncu_tabela">
+                <span>User</span>
+                <div style="color: black;" class="kutu oyuncu_skor">
+                    <p id="kullaniciScore"></p>
+                </div>
+            </div>
+            <p style="font-size: 32px;">VS</p>
+            <div class="bilgisayar_tabela">
+                <span>Computer</span>
+                <div style="color: black;" class="kutu bilgisayar_skor">
+                    <p id="bilgisayarScore"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="liste" class="liste d-flex justify-content-around">
+        <img src="img/kagit.png" id="kagit" width="250" height="250" data-id="0" />
+        <img src="img/makas.png" id="makas" width="250" height="250" data-id="1" />
+        <img src="img/tas.png" id="tas" width="250" height="250" data-id="2" />
+    </div>
+	<div><br><br></div>
+    <div id="bilgisayar-sonuc" class="bilgisayar-sonuc d-flex justify-content-center">
+        <img src="img/ful.png" id="bilgisayar-secim" width="150" height="150" alt="" />
+		
+        <div id="sonuc" class=" sonuc d-flex justify-content-center">GOOD LUCK!</div>
+        <img src="" alt="" id="lucky" class="img-fluid w-10">
+    </div>
+    <script type="text/javascript">
+        var liste = ["img/kagit.png", "img/makas.png", "img/tas.png"];
+        var kagit = document.getElementById("kagit");
+        var makas = document.getElementById("makas");
+        var tas = document.getElementById("tas");
+        var bilgisayarSecim = document.getElementById("bilgisayar-secim");
+        var sonucYazdir = document.getElementById("sonuc");
+        kagit.onclick = secimYap;
+        makas.onclick = secimYap;
+        tas.onclick = secimYap;
+        var score=0;
+        function secimYap() {
+            var bilgisayar = RasgeleKagit();
+            var secim = this.dataset.id;
+            if (bilgisayar == 0 && secim == 0) {
+                sonuc = "You made the same choice.. DRAW!";
+                score++;
+                document.getElementById("kullaniciScore").innerHTML= score;
+                document.getElementById("bilgisayarScore").innerHTML= score;
+            } else if (bilgisayar == 0 && secim == 1) {
+                sonuc = "Scissors cuts paper.. YOU WIN!";
+            } else if (bilgisayar == 0 && secim == 2) {
+                sonuc = "Paper wraps rock.. YOU LOSE!";
+            } else if (bilgisayar == 1 && secim == 0) {
+                sonuc = "Scissors cuts paper.. YOU LOSE!";
+            } else if (bilgisayar == 1 && secim == 1) {
+                sonuc = "You made the same choice.. DRAW!";
+                score++;
+                document.getElementById("kullaniciScore").innerHTML= score;
+                document.getElementById("bilgisayarScore").innerHTML= score;
+            } else if (bilgisayar == 1 && secim == 2) {
+                sonuc = "Rock breaks scissors.. YOU WIN!";
+            } else if (bilgisayar == 2 && secim == 0) {
+                sonuc = "Paper wraps rock.. YOU WIN!";
+            } else if (bilgisayar == 2 && secim == 1) {
+                sonuc = "Rock breaks scissors.. YOU LOSE!";
+            } else if (bilgisayar == 2 && secim == 2) {
+                sonuc = "You made the same choice.. DRAW!";
+                score++;
+                document.getElementById("kullaniciScore").innerHTML= score;
+                document.getElementById("bilgisayarScore").innerHTML= score;
+            }
+            sonucYazdir.innerHTML = sonuc;
+        }
+        function RasgeleKagit() {
+            var sayi = Math.round(Math.random() * 2);
+            bilgisayarSecim.src = liste[sayi];
+            return sayi;
+        }
+    </script>
+</body>
+</html>
